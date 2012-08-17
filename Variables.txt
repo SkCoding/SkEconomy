@@ -1,0 +1,39 @@
+SkEconomy
+
+SkEconomyMoney
+{skeconomy.money.message} - The message shown on /skMoney
+{skeconomy.%player%.money.total} - A player's total money
+{skeconomy.money.name} - The currency name
+{skeconomy.%player%.player.payto} - The /skMoneypay and /skMoneygiveto target player
+{skeconomy.%player%.moneyother.shown} - The /skMoneyother target player
+{skeconomy.moneyother.message} - The /skMoneyother message
+
+SkEconomyEarn
+{skeconomy.earn.block.%id of argument 1%} - An EarnBlock
+{skeconomy.earn.reward.%id of argument 1%} - The EarnBlock reward
+{skeconomy.%player%.earn.notify} - The player's /skMoneyearn on/off status
+{skeconomy.earn.message} - The message shown when performing an EarnBlock action
+{skeconomy.%player%.earn.block.%location of block%} - The location of a placed EarnBlock
+
+SkEconomyGive
+{skeconomy.%player%.give.to} - The player receiving the gift
+
+SkEconomyRequest
+{skeconomy.%player%.req.to} - The player being requested
+{skeconomy%player%.req.from} - The player requesting the money
+
+SkEconomyBank
+{skeconomy.%player%.bank.deposit} - The amount of money the player is depositing
+{skeconomy.%player%.bank.total} - The player's bank balance
+{skeconomy.bank.max} - The maximum amount of money that can be stored in a bank account
+{skeconomy.%player%.bank.difference} - The difference between the bankmax and the total
+{skeconomy.%player%.bank.withdraw} - The amount of money the player is withdrawing
+{skeconomy.%player%.bankother.shown} - The player that is being checked by /skBankother
+{skeconomy.%player%.bankother.showntotal} - The the checked player's bank balance
+{skeconomy.%player%.bank.remove.from} - The player to remove bank money from
+
+SkEconomyItemBank
+{skeconomy.%player%.itembank.deposit} - The item the player wants to deposit and the stored item
+{skeconomy.%player%.itembank.ifstored} - Whether an item is stored or not
+
+

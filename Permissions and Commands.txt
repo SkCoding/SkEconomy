@@ -1,0 +1,31 @@
+SkEconomyGive
+skGive <amount> - Give yourself some money - skeconomy.give.self
+skGiveto <amount> <player> - Give someone else some money - skeconomy.give.others
+
+SkEconomyEarn
+skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.earn.set
+skEarnnotify <on/off> - Turn EarnNotify on or off - skeconomy.earn.notify
+
+SkEconomyRequest
+skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request
+
+SkEconomyMoney
+skMoney - Show the players total money - skeconomy.money.show
+skMoneypay <amount> <player> - Pay another player some money - skeconomy.pay
+skMoneyname <text> - Set the currency name - skeconomy.money.setname
+skMoneymsg <text> - set the /skMoney message - skeconomy.money.setmsg
+skMoneyother <player> - Check another player's total money - skeconomy.moneyother.show
+skMoneyothermsg <text> - Set the /skMoneyother <player> message - skeconomy.moneyother.setmsg
+
+Misc:
+skeconomy.moneyother.hidden - Hides player from /skMoneyother <player>
+
+SkEconomyBank
+sBankdep <amount> - Deposit money into your bank account - skeconomy.bank.deposit
+sBankwit <amount> - Withdraw money from your bank account - skeconomy.bank.withdraw
+skBank - Show your bank balance - skeconomy.bank.show
+skBankother <player> - Show the bank balance of another player - skeconomy.bankother.show
+skMoneybankrem <amount> <player> - Removes an amount of money from a player's bank balance
+
+Misc:
+skeconomy,bankother.hidden - Hides the player from the command /skBankother <player>

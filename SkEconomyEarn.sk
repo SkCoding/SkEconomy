@@ -1,0 +1,72 @@
+command /skEarnset <material> <integer>:
+	permission: skeconomy.earn.set
+	description: Set a block to earn money from by mining.
+	usage: /skEarnset <block> <reward>
+	trigger:
+		if player has permission "skeconomy.earn.set":
+			set {skeconomy.earn.block.%id of argument 1%} to material argument
+			set {skeconomy.earn.reward.%id of argument 1%} to integer argument
+			message "Mining <aqua>%{skeconomy.earn.block.%id of argument 1%}% <white>will now give you <aqua>%{skeconomy.earn.reward.%id of argument 1%}% <aqua>%{skeconomy.money.name}%"
+		else:
+			message "You do not have the required permission"
+
+command /skEarnwhat <text>:
+	permission: skeconomy.earn.what
+	description: See  what the EarnBlock and reward is for each group
+	usage: /skEarnwhat <group(1/2/3)>
+	trigger:
+		player has permission "skeconomy.earn.what":
+			if text argument is "1":
+				message "Group %text argument%: <aqua>%{skeconomy.earn.block1}% <white>gives <aqua>%{skeconomy.earn.reward1}% %{skeconomy.money.name}%"
+
+command /skEarnnotifyon:
+	permission: skeconomy.earn.notify
+	description: Turn Earn Notify on.
+	usage: /skEarnnotifyon
+	trigger:
+		player has permission "skeconomy.earn.notify":
+			if {skeconomy.%player%.earn.notify} is true:
+				message "Earn Notify is already on"
+			else:
+				set {skeconomy.%player%.earn.notify} to true
+				message "Earn  Notify is now on"
+		else:
+			message "You don't have the required permission"
+				
+
+command /skEarnnotifyoff:
+	permission: skeconomy.earn.notify
+	description: Turn Earn Notify off.
+	usage: /skEarnnotifyoff
+	trigger:
+		player has permission "skeconomy.earn.notify":
+			if {skeconomy.%player%.earn.notify} is false:
+				message "Earn Notify is already off"
+			else:
+				set {skeconomy.%player%.earn.notify} to false
+				message "Earn  Notify is now of"
+		else:
+			message "You don't have the required permission"
+
+on mine:
+	if location of block is {skeconomy.%player%.earn.block.%location of block%}:
+		delete {skeconomy.%player%.earn.block.%location of block%}
+		stop trigger
+	if type of block is {skeconomy.earn.block.%id of block%}:
+		player's gamemode is survival:
+			player has permission "skeconomy.earn.allow":
+				add {skeconomy.earn.reward.%id of block%} to {skeconomy.%player%.money.total}
+				if {skeconomy.%player%.earn.notify} is true:
+					message "You got %{skeconomy.earn.reward.%id of block%}% from mining %{skeconomy.earn.block.%id of block%}%"
+				else: 
+					stop trigger
+			else:
+				stop trigger
+		else:
+			stop trigger
+	else:
+		stop trigger
+
+on place:
+	if type of block is {skeconomy.block.earn.block.%id of block%}:
+		set {skeconomy.%player%.earn.block.%location of block%} to location of block

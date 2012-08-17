@@ -1,0 +1,26 @@
+command /skGive <integer>:
+	description: Give yourself some money.
+	usage: /skMoneygive <amount>
+	aliases: /ggs <argument 1>
+	permission: skeconomy.give.self
+	trigger:
+		player has permission "skeconomy.give.self":
+			add argument 1 to {skeconomy.%player%.money.total}
+			message "You gave yourself %argument 1% %{skeconomy.money.name}%"
+		else:
+			message "<red>You don't have permission to give yourself money"
+
+command /skGiveto <integer> <player>:
+	description: Give someone else some money.
+	usage: /skMoneygiveto <amount> <player>
+	aliases: /ggt
+	permission: skeconomy.give.others
+	trigger:
+		player has permission "skeconomy.give.others":
+			message "Giving %argument 1% %{skeconomy.money.name}% to %argument 2%"
+			set {skeconomy.%player%.give.to} to argument 2
+			add argument 1 to {skeconomy.%{skeconomy.%player%.give.to}%.money.total}
+			send "You were given %argument 1% %{skeconomy.money.name}% from %player%" to {skeconomy.%player%.give.to}
+			message "You successfully gave %argument 1% %{skeconomy.money.name}% to %{skeconomy.%player%.give.to}%"
+		else:
+			message "<red>You don't have permission to give people money"
