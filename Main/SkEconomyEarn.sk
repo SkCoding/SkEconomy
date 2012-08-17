@@ -1,0 +1,64 @@
+command /skEarnset <material> <integer>:
+	permission: skeconomy.earn.set
+	description: Set a block to earn money from by mining.
+	usage: /skEarnset <block> <reward>
+	trigger:
+		if player has permission "skeconomy.earn.set":
+			set {skeconomy.block.%id of argument 1%} to material argument
+			set {skeconomy.reward.%id of argument 1%} to integer argument
+			message "Mining <aqua>%{skeconomy.block.%id of argument 1%}% will give you <aqua>%{skeconomy.reward.%id of argument 1%}%"
+		else:
+			message "You do not have the required permission"
+
+command /skEarnnotifyon:
+	permission: skeconomy.earn.notify
+	description: Turn Earn Notify on.
+	usage: /skEarnnotifyon
+	trigger:
+		player has permission "skeconomy.earn.notify":
+			if {skeconomy.%player%.earn.notify} is true:
+				message "Earn Notify is already on"
+			else:
+				set {skeconomy.%player%.earn.notify} to true
+				message "Earn  Notify is now on"
+		else:
+			message "You don't have the required permission"
+				
+
+command /skEarnnotifyoff:
+	permission: skeconomy.earn.notify
+	description: Turn Earn Notify off.
+	usage: /skEarnnotifyoff
+	trigger:
+		player has permission "skeconomy.earn.notify":
+			if {skeconomy.%player%.earn.notify} is false:
+				message "Earn Notify is already off"
+			else:
+				set {skeconomy.%player%.earn.notify} to false
+				message "Earn  Notify is now of"
+		else:
+			message "You don't have the required permission"
+options:
+	radius: 1
+on mine:
+	if location of block is {skeconomy.%location of block%}:
+		delete {skeconomy.%location of block%}
+		stop trigger
+	if type of block is {skeconomy.block.%id of block%}:
+		player's gamemode is survival:
+			player has permission "skeconomy.earn.allow":
+				add {skeconomy.reward.%id of block%} to {skeconomy.%player%.money.total}
+				if {skeconomy.%player%.earn.notify} is true:
+					message "You got %{skeconomy.reward.%id of block%}% from mining %{skeconomy.block.%id of block%}%"
+				else: 
+					stop trigger
+			else:
+				stop trigger
+		else:
+			stop trigger
+	else:
+		stop trigger
+			
+on place:
+	if type of block is {skeconomy.block.%id of block%}:
+		set {skeconomy.%location of block%} to location of block

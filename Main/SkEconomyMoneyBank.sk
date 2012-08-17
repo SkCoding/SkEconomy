@@ -1,0 +1,82 @@
+command /skBankdep <integer>:
+	permission: skeconomy.bank.deposit
+	usage: /skBankdep <amount>
+	description: Deposit money into your bank account.
+	trigger:
+		set {skeconomy.bank.max} to 5
+		set {skeconomy.%player%.bank.deposit} to integer argument
+		if {skeconomy.%player%.bank.deposit} is greater than {skeconomy.%player%.money.total}:
+			message "You do not have that much money"
+			stop trigger
+		else:
+			add {skeconomy.%player%.bank.deposit} to {skeconomy.%player%.bank.total}
+			if {skeconomy.%player%.bank.total} is greater than {skeconomy.bank.max}:
+				remove {skeconomy.%player%.bank.deposit} from {skeconomy.%player%.bank.total}
+				message "Cannot deposit because you have reached the bank limit"
+				stop trigger
+			else:
+				remove {skeconomy.%player%.bank.deposit} from {skeconomy.%player%.money.total}
+				set {skeconomy.%player%.bank.difference} to {skeconomy.%player%.bank.total} - {skeconomy.bank.max}
+				message "You have deposited %{skeconomy.%player%.bank.deposit}% %{skeconomy.money.name}%  into your bank account"	
+				stop trigger
+
+command /skBankwit <integer>:
+	permission: skeconomy.bank.withdraw
+	usage: /skBankwit <amount>
+	description: Withdraw money from your bank account.
+	trigger:
+		set {skeconomy.%player%.bank.withdraw} to integer argument
+		if {skeconomy.%player%.bank.withdraw} is greater than {skeconomy.%player%.money.total}:
+			message "You don't have that much money in your bank account"
+			stop trigger
+		else:
+			remove {skeconomy.%player%.bank.withdraw} from {skeconomy.%player%.bank.total}
+			if {skeconomy.%player%.bank.total} is less than 1:
+				add {skeconomy.%player%.bank.withdraw} to {skeconomy.%player%.bank.total}
+				message "You don't have that much money in your bank account"
+				stop trigger
+			else:
+				add {skeconomy.%player%.bank.withdraw} to {skeconomy.%player%.money.total}
+				message "You have withdrawn %{skeconomy.%player%.bank.withdraw}% %{skeconomy.money.name}% from your bank account"
+				message "You have %{skeconomy.%player%.bank.difference}% %{skeconomy.money.name}% worth of space left in your bank account"
+				stop trigger
+
+command /skBank:
+	permission: skeconomy.bank.show
+	description: SHow how much money you have in your bank account
+	trigger:
+		if {skeconomy.%player%.bank.total} is 0:
+			message "You don't have any money in your bank account"
+		else:
+			message "You have %{skeconomy.%player%.bank.total}% %{skeconomy.money.name}% in your bank account"
+
+command /skBankother <player>:
+	permission: skeconomy.bankother.show
+	description: Show how much money someone has in their bank account.
+	trigger:
+		set {skeconomy.%player%.bankother.shown} to argument
+		if {skeconomy.%player%.bankother.shown} has permission "skeconomy.bankother.hidden":
+			message "This player is hidden from this command"
+		else:
+			if {skeconomy.%{skeconomy.%player%.bankother.shown}%.bank.total} is 0:
+				message "%{skeconomy.%player%.bankother.shown}% doesn't have any money in their bank account"
+			else:
+				set {skeconomy.%player%.bankother.showntotal} to {skeconomy.%{skeconomy.%player%.bankother.shown}%.bank.total}
+				message "%{skeconomy.%player%.bankother.shown}% has %{skeconomy.%player%.bankother.showntotal}% in their bank account"
+
+
+command /skBankrem <integer> <player>:
+	aliases: /smbr <integer> <player>
+	permission: skeconomy.bank.remove
+	description: Remove som money from a players bank account.
+	usage: /skMoneybankrem <amount> <player>
+	trigger:
+		player has permission "skeconomy.bank.remove":
+			set {skeconomy.%player%.bank.remove.from} to player argument
+			if {skeconomy.%{skeconomy.%player%.bank.remove.from}%.bank.total} is smaller than integer argument:
+				message "%{skeconomy.%player%.bank.remove.from}% does not have %integer argument% %{skeconomy.money.name}%  in their bank account"
+			else:
+				remove integer argument from {skeconomy.%{skeconomy.%player%.bank.remove.from}%.bank.total}
+				message "%integer argument% %{skeconomy.money.name}% have been removed from your bank account"
+		else:
+			message "You don't have the required permission"
