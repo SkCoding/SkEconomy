@@ -3,7 +3,7 @@ command /skBankdep <integer>:
 	usage: /skBankdep <amount>
 	description: Deposit money into your bank account.
 	trigger:
-		set {skeconomy.bank.max} to 5
+		set {skeconomy.bank.max} to 50000
 		set {skeconomy.%player%.bank.deposit} to integer argument
 		if {skeconomy.%player%.bank.deposit} is greater than {skeconomy.%player%.money.total}:
 			message "You do not have that much money"
@@ -80,3 +80,26 @@ command /skBankrem <integer> <player>:
 				message "%integer argument% %{skeconomy.money.name}% have been removed from your bank account"
 		else:
 			message "You don't have the required permission"
+
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "50":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 50:
+						message "You do not have that much money"
+					else:
+						remove 50 from {skeconomy.%player%.money.total}
+						add 50 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>50 <white>%{skeconomy.money.name}% into your bank account"
+			set {skeconomy.%player%.bank.deposit} to line 3 of the clicked block
+			player has permission "skeconomy.bank.deposit":
+				if {skeconomy.%player%.money.total} is smaller than {skeconomy.%player%.bank.deposit}:
+					message "You do not have that much money"
+				else:
+					remove {skeconomy.%player%.bank.deposit} from {skeconomy.%player%.money.total}
+					add {skeconomy.%player%.bank.deposit} to {skeconomy.%player%.bank.total}
+					message "You have deposited <aqua>%{skeconomy.%player%.bank.deposit}% <white>%{skeconomy.money.name}% into your bank account"
+
+
+	
