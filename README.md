@@ -5,14 +5,18 @@ SKEconomy is Skript based Economy for Minecraft with the objective of effectivel
 integerating a wide range of Economic tools.
 
 
-Installing
+Installation
 -------------------------------------
 
-after installing and setting up craftbukkit:
-1. download the Skript.zip from http://dev.bukkit.org/server-mods/skript/files/
-2. extract into the bukkit plugins folder
-3. download skeconomy.zip from github or http://dev.bukkit.org/server-mods/my-scripts-njolbrims-skript/
-4. extract skeconomy.zip into plugins\Skript\scripts
+After installing and setting up craftbukkit:
+
+1. Download the Skript.zip from http://dev.bukkit.org/server-mods/skript/files/
+
+2. Extract into the bukkit plugins folder
+
+3. Download skeconomy.zip from github or http://dev.bukkit.org/server-mods/my-scripts-njolbrims-skript/
+
+4. Extract skeconomy.zip into plugins\Skript\scripts
 
 We strongly suggest looking at the skripts for config options, available at the top of each script.
 
@@ -20,7 +24,7 @@ We strongly suggest looking at the skripts for config options, available at the 
 Issue Tracker & Suggestions
 -------------
 
-Please submit bug reports and feature requests here:
+Please submit bug reports and feature requests for SkEconomy here:
 https://github.com/SkCoding/SkEconomyDev/issues
 
 
