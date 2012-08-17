@@ -1,0 +1,57 @@
+command /skItembankdep <material>:
+	permission: skeconomy.itembank.deposit
+	description: Deposit an item into your item bank. Enchanted items are not supported.
+	usage: /skItembankdep <item(s)/block(s)>
+	trigger:
+		player has permission "skeconomy.itembank.deposit":
+			if {skeconomy.%player%.itembank.ifstored} is true:
+				message "Your Item Bank is full"
+				stop trigger
+			else:
+				set {skeconomy.%player%.itembank.deposit} to material argument
+				player has {skeconomy.%player%.itembank.deposit}:
+					remove {skeconomy.%player%.itembank.deposit} from player
+					set {skeconomy.%player%.itembank.ifstored} to true
+					message "You have deposited a/an %{skeconomy.%player%.itembank.deposit}%"
+				else:
+					message "You do not have a/an %{skeconomy.%player%.itembank.deposit}%"
+
+		else:
+			message "You don't have the required permission"
+
+command /skItembank:
+	permission: skeconomy.itembank.show
+	description: Show what is in your item bank.
+	trigger:
+		player has permission "skeconomy.itembank.show":
+			if {skeconomy.%player%.itembank.ifstored} is false:
+				message "Your Item Bank is empty"
+				stop trigger
+			else:
+				message "You have a/an %{skeconomy.%player%.itembank.deposit}% in your Item bank"
+				stop trigger
+		else:
+			message "You don't have the required permission" 
+			stop trigger
+
+command /skItembankwit:
+	permission: skeconomy.itembanl.withdraw
+	description: Withdraw the item stored in your Item Bank.
+	trigger:
+		player has permission "skeconomy.itembank.withdraw":
+			if {skeconomy.%player%.itembank.ifstored} is false:
+				message "Your Item Bank is empty"
+				stop trigger
+			else:
+				player cannot hold {skeconomy.%player%.itembank.deposit}:
+					message "You don't have enough space in your inventory to hold the stored item"
+				else:
+					add {skeconomy.%player%.itembank.deposit} to player
+					set {skeconomy.%player%.itembank.ifstored} to false
+					message "You withdrew a/an %{skeconomy.%player%.itembank.deposit}% from your Item Bank"
+		else:
+			message "You don't have the required permission"
+
+command /setbankempty:
+	trigger:
+		set {skeconomy.%player%.itembank.ifstored} to false
