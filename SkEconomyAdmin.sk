@@ -6,8 +6,10 @@ command /skGive <integer> <player = %player%>:
 	trigger:
 		player has permission "skeconomy.admin.give":
 			add argument 1 to {skeconomy.%argument 2%.money.total}
-			if argument 2 is not %player%:
+			if argument 2 is not the player:
 				send "You were given %argument 1% %{skeconomy.money.name}% from %player%" to argument 2
-			message "You gave %argument 1% %{skeconomy.money.name}% to %argument 2%"
+				message "You gave <aqua>%argument 1% <aqua>%{skeconomy.money.name}% <white>to <aqua>%argument 2%"
+			else:
+				message "You gave <aqua>%argument 1% <aqua>%{skeconomy.money.name}% <white>to <aqua>%argument 2%"
 		else:
-			"You do not have the required permission"
+			message "You do not have the required permission"
