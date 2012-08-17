@@ -13,7 +13,7 @@ SkEconomyEarn
 {skeconomy.earn.reward.%id of argument 1%} - The EarnBlock reward
 {skeconomy.%player%.earn.notify} - The player's /skMoneyearn on/off status
 {skeconomy.earn.message} - The message shown when performing an EarnBlock action
-{skeconomy.%player%.earn.block.%location of block%} - The location of a placed EarnBlock
+{skeconomy.%location of block%} - The location of a placed EarnBlock
 
 SkEconomyGive
 {skeconomy.%player%.give.to} - The player receiving the gift

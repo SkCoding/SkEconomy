@@ -4,7 +4,8 @@ skGiveto <amount> <player> - Give someone else some money - skeconomy.give.other
 
 SkEconomyEarn
 skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.earn.set
-skEarnnotify <on/off> - Turn EarnNotify on or off - skeconomy.earn.notify
+skEarnnotify - Toggle EarnNotify on and off - skeconomy.earn.notify
+skEarnwhat <block> - check reward the reward for an earnblock if there is one
 
 SkEconomyRequest
 skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request
