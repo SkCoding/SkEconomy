@@ -1,0 +1,51 @@
+on rightclick on sign:
+	if line 1 is "[MBank]":
+		if player has permission "skeconomy.moneysign.use":
+			set line 2 to "deposit"
+			set line 3 to "%{skeconomy.%player%.bank.total}%"
+			set {skeconomy.%player%.signdeposit} to true
+			wait 1 minute
+			delete {skeconomy.%player%.signdeposit}
+			set line 2 to ""
+			set line 3 to ""
+		if player does not have permission "skeconomy.moneysign.use":
+			message "<Dark Red>You do not have permission to use bank signs."
+			stop
+
+on leftclick on sign:
+	if line 1 is "[MBank]":
+		if player has permission "skeconomy.moneysign.use":
+			set line 2 to "withdraw"
+			set line 3 to "%{skeconomy.%player%.bank.total}%"
+			set {skeconomy.%player%.signwithdraw} to true
+			wait 1 minute
+			delete {skeconomy.%player%.signwithdraw}
+			set line 2 to ""
+			set line 3 to ""
+		if player does not have permission "skeconomy.moneysign.use":
+			message "<Dark Red>You do not have permission to use bank signs."
+			stop
+			
+on chat:
+	if {skeconomy.%player%.signdeposit} is set:
+		if %chat% is an integer:
+			if %chat% is less than {skeconomy.%player%.money.total}:
+				subtract %chat% from {skeconomy.%player%.money.total}
+				add %chat% to {skeconomy.%player%.bank.total}
+				message "<Dark Red> %chat% added to bank, you current money is %{skeconomy.%player%.money.total}%, right click sign again to see bank amount"
+	if {skeconomy.%player%.signwithdraw} is set:
+		if %chat% is an integer:
+			if %chat% is less than {skeconomy.%player%.bank.total}:
+				subtract %chat% from {skeconomy.%player%.bank.total}
+				add %chat% to {skeconomy.%player%.money.total}
+				message "<Dark Red> %chat% added to money, you current money is %{skeconomy.%player%.money.total}%, right click sign again to see bank amount"	
+	
+on sign change:
+	if line 1 is "[MBank]":
+		if player does not have permission "skeconomy.moneysign.set":
+			message "<Dark Red> You don't have permission to make bank signs."
+			cancel event
+			stop
+		if player has permission "skeconomy.moneysign.set":
+			message "<Dark Red> Bank sign set."
+			stop
