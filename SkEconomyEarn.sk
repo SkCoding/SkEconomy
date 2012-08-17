@@ -29,20 +29,20 @@ command /skEarnnotify:
 			message "Earn Notify is now off"
 		else:
 			set {skeconomy.%player%.earn.notify} to true
-			message "Earn  Notify is now on"
+			message "Earn Notify is now on"
 
 on place:
-	if type of block is {skeconomy.block.%id of block%}:
-		set {skeconomy.%location of block%} to location of block			
+	if type of block is {skeconomy.earn.block.%id of block%}:
+		set {skeconomy.earn.block.%location of block%} to location of block			
 
 on mine:
-	if location of block is {skeconomy.%location of block%}:
-		delete {skeconomy.%location of block%}
+	if location of block is {skeconomy.earn.block.%location of block%}:
+		delete {skeconomy.earn.block.%location of block%}
 		stop trigger
 	if type of block is {skeconomy.earn.block.%id of block%}:
 		player's gamemode is survival:
 			player has permission "skeconomy.earn.allow":
 				add {skeconomy.earn.reward.%id of block%} to {skeconomy.%player%.money.total}
 				if {skeconomy.%player%.earn.notify} is true:
-					message "You got %{skeconomy.reward.%id of block%}% from mining %{skeconomy.block.%id of block%}%"
+					message "You got <aqua>%{skeconomy.earn.reward.%id of block%}% <white>from mining <aqua>%{skeconomy.earn.block.%id of block%}%"
 	stop trigger
