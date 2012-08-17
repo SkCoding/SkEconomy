@@ -1,6 +1,6 @@
-command /skReq <integer> <player>:
+command /skMoneyreq <integer> <player>:
 	description: Request some money from someone.
-	usage: /skReq <amount> <player>
+	usage: /skMoneyreq <amount> <player>
 	permission: skeconomy.money.request
 	trigger:
 		player has permission "skeconomy.money.request":
