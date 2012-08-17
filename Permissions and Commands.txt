@@ -1,11 +1,12 @@
+command <conditions> [optional] - description - permission - aliases
+
 SkEconomyGive
-skGive <amount> - Give yourself some money - skeconomy.give.self
-skGiveto <amount> <player> - Give someone else some money - skeconomy.give.others
+skmoneyGive <amount> [player]- Give money to yourself or another player. - skeconomy.admin.give - give, moneygive
 
 SkEconomyEarn
 skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.earn.set
-skEarnnotify - Toggle EarnNotify on and off - skeconomy.earn.notify
-skEarnwhat <block> - check reward the reward for an earnblock if there is one
+skEarnnotify - Toggle EarnNotify on and off - skeconomy.earn.notify - earntoggle, skearntoggle
+skEarnwhat <block> - check reward the reward for an earnblock if there is one - earnwhat
 
 SkEconomyRequest
 skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request

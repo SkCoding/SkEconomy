@@ -15,9 +15,6 @@ SkEconomyEarn
 {skeconomy.earn.message} - The message shown when performing an EarnBlock action
 {skeconomy.%location of block%} - The location of a placed EarnBlock
 
-SkEconomyGive
-{skeconomy.%player%.give.to} - The player receiving the gift
-
 SkEconomyRequest
 {skeconomy.%player%.req.to} - The player being requested
 {skeconomy%player%.req.from} - The player requesting the money
