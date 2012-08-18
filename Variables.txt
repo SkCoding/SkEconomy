@@ -4,9 +4,7 @@ SkEconomyMoney
 {skeconomy.money.message} - The message shown on /skMoney
 {skeconomy.%player%.money.total} - A player's total money
 {skeconomy.money.name} - The currency name
-{skeconomy.%player%.player.payto} - The /skMoneypay and /skMoneygiveto target player
-{skeconomy.%player%.moneyother.shown} - The /skMoneyother target player
-{skeconomy.moneyother.message} - The /skMoneyother message
+#{skeconomy.moneyother.message} - The /skMoneyother message //disabled
 
 SkEconomyEarn
 {skeconomy.earn.block.%id of argument 1%} - An EarnBlock

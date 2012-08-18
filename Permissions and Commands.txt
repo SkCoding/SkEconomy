@@ -4,23 +4,23 @@ SkEconomyGive
 skmoneyGive <amount> [player]- Give money to yourself or another player. - skeconomy.admin.give - give, moneygive
 
 SkEconomyEarn
-skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.earn.set
+skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.admin.earn.set
 skEarnnotify - Toggle EarnNotify on and off - skeconomy.earn.notify - earntoggle, skearntoggle
-skEarnwhat <block> - check reward the reward for an earnblock if there is one - earnwhat
+skEarnwhat <block> - check reward the reward for an earnblock if there is one - skeconomy.earn.what - earnwhat
 
 SkEconomyRequest
 skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request
 
 SkEconomyMoney
-skMoney - Show the players total money - skeconomy.money.show
-skMoneypay <amount> <player> - Pay another player some money - skeconomy.pay
-skMoneyname <text> - Set the currency name - skeconomy.money.setname
-skMoneymsg <text> - set the /skMoney message - skeconomy.money.setmsg
-skMoneyother <player> - Check another player's total money - skeconomy.moneyother.show
-skMoneyothermsg <text> - Set the /skMoneyother <player> message - skeconomy.moneyother.setmsg
+skMoney - Show the players total money - skeconomy.money.show - money, eco, gold
+skMoneypay <amount> <player> - Pay another player some money - skeconomy.money.pay - pay
+skMoneyname <text> - Set the currency name - skeconomy.admin.money.setname
+skMoneymsg <text> - set the /skMoney message - skeconomy.admin.money.setmsg
+skMoneyother <player> - Check another player's total money - skeconomy.admin.moneyother
+#skMoneyothermsg <text> - Set the /skMoneyother <player> message - skeconomy.moneyother.setmsg //disabled
 
 Misc:
-skeconomy.moneyother.hidden - Hides player from /skMoneyother <player>
+skeconomy.admin.moneyother.hidden - Hides player from /skMoneyother <player>
 
 SkEconomyBank
 sBankdep <amount> - Deposit money into your bank account - skeconomy.bank.deposit

@@ -2,96 +2,64 @@
 command /skMoney:
 	executable by: players
 	permission: skeconomy.money.show
+	aliases: eco, money, gold
 	trigger:
-		player has permission "skeconomy.money.show":
-			if {skeconomy.%player%.money.total} is 0:
-				message "You don't have any money"
-			else:
-				message "%{skeconomy.money.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
+		if {skeconomy.%player%.money.total} is 0:
+			message "You don't have any money"
 		else:
-			message "<red>You don't have the required permission"
-
-
+			message "%{skeconomy.money.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
 
 
 command /skMoneypay <integer> <player>:
 	description: Pay some money to someone.
 	usage: /skMoneypay <amount> <player>
-	permission: skeconomy.pay
+	permission: skeconomy.money.pay
+	aliases: pay
 	trigger:
-		player has permission "skeconomy.pay":
-			send "Paying %argument 1% %{skeconomy.money.name}% to %argument 2%"
-			set {skeconomy.%player%.money.paying} to integer argument
-			set {skeconomy.%player%.player.payto} to argument 2
-			if {skeconomy.%player%.money.paying} is greater than {skeconomy.%player%.money.total}:
-				message "You don't have enough money"
-				stop trigger
-			else:
-				add argument 1 to {skeconomy.%player%.player.payto}
-				remove argument 1 from {skeconomy.%player%.money.total}
-				add argument 1 to {skeconomy.%{skeconomy.%player%.player.payto}%.money.total}
-				send "You recieved %{skeconomy.%player%.money.paying}% from from %player%" to {%player%.money.payto}
-				message "You successfully paid %argument 1% %{skeconomy.money.name}% to %{skeconomy.%player%.player.payto}%"
+		if argument 1 is greater than {skeconomy.%player%.money.total}:
+			message "You don't have enough money"
+			stop trigger
 		else:
-			message "<red>You don't have the required permission"
-
-
+			subtract argument 1 from {skeconomy.%player%.money.total}
+			add argument 1 to {skeconomy.%argument 2%.money.total}
+			send "You recieved %argument 1% from from %player%" to argument 2
+			message "You successfully paid %argument 1% %{skeconomy.money.name}% to %argument 2%"
 
 
 command /skMoneyname <text>:
-	permission: skeconomy.money.setname
+	permission: skeconomy.admin.money.setname
 	description: Set the name for your server's currency!
 	usage: /skMoneyname <name>
 	trigger:
-		player has permission "skeconomy.money.setname":
-			set {skeconomy.money.name} to text argument
-			message "Your server's currency has been set to <aqua>%{skeconomy.money.name}%"
-		else: 
-			message "<red>You don't have the required permission"
-
-
+		set {skeconomy.money.name} to argument
+		message "Your server's currency has been set to <aqua>%{skeconomy.money.name}%"
 
 
 command /skMoneymsg <text>:
-	permission: skeconomy.money.setmsg
-	description: Set the /skGold message. Amount and currency will be added automatically.
+	permission: skeconomy.admin.money.setmsg
+	description: Set the /Gold message. Amount and currency will be added automatically.
 	usage: /skMoneymsg <message>
 	trigger:
-		player has permission "skeconomy.money.setmsg":
-			set {skeconomy.money.message} to text argument
-			message "The /gold message has been set to <aqua>%{skeconomy.money.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
-
-		else:
-			message "<red>You don't have the required permission"
-
-
+		set {skeconomy.money.message} to text argument
+		message "The /gold message has been set to <aqua>%{skeconomy.money.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
 
 
 command /skMoneyother <player>:
 	executable by: players
-	permission: skeconomy.moneyother.show
+	permission: skeconomy.admin.moneyother
 	trigger:
-		player has permission "skeconomy.moneyother.show":
-			set {skeconomy.%player%.moneyother.shown} to argument
-			{skeconomy.%player%.moneyother.shown} has permission "skeconomy.moneyother.hiiden":
-				message "Player is hidden from this command"
-			else:
-				set {skeconomy.%player%.money.showntotal} to {%{skeconomy.%player%.moneyother.shown}%.money.total}
-				message "{skeconomy.%player%.moneyother.shown} {skeconomy.moneyother.message} %{skeconomy.%player%.money.showntotal}%"
+		if argument has permission "skeconomy.admin.moneyother.hidden":
+			message "Player is hidden from this command"
 		else:
-			message "<red>You don't have the required permission"
+			message "%argument% has <aqua>{skeconomy.%argument%.money.total} %{skeconomy.money.name}%"
 
+# seemingly useless command?
+#command /skMoneyothermsg <text>:
+#	permission: skeconomy.moneyother.setmsg
+#	description: Set the /skMoneyother message. Amount, currency and player will be added automatically.
+#	usage: /skMoneyothermsg <message>
+#	trigger:
+#		set {skeconomy.moneyother.message} to text argument
+#		message "The /skMoneyother message has been set to <aqua>Player %{skeconomy.moneyother.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
 
-
-command /skMoneyothermsg <text>:
-	permission: skeconomy.moneyother.setmsg
-	description: Set the /skMoneyother message. Amount, currency and player will be added automatically.
-	usage: /skMoneyothermsg <message>
-	trigger:
-		player has permission "skeconomy.moneyother.setmsg":
-			set {skeconomy.moneyother.message} to text argument
-			message "The /skMoneyother message has been set to <aqua>Player %{skeconomy.moneyother.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
-
-		else:
-			message "<red>You don't have the required permission"
 
