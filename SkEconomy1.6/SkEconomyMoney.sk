@@ -6,7 +6,7 @@ command /skMoney:
 			if {skeconomy.%player%.money.total} is 0:
 				message "You don't have any money"
 			else:
-				message "%{skeconomy.money.message}% %{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
+				message "%{skeconomy.money.message}% <aqua>%{skeconomy.%player%.money.total}% %{skeconomy.money.name}%"
 		else:
 			message "<red>You don't have the required permission"
 
@@ -19,7 +19,7 @@ command /skMoneypay <integer> <player>:
 	permission: skeconomy.pay
 	trigger:
 		player has permission "skeconomy.pay":
-			send "Paying %argument 1% %{skeconomy.money.name}% to %argument 2%"
+			send "Paying <aqua>%argument 1% <aqua>%{skeconomy.money.name}% <white>to <aqua>%argument 2%"
 			set {skeconomy.%player%.money.paying} to integer argument
 			set {skeconomy.%player%.player.payto} to argument 2
 			if {skeconomy.%player%.money.paying} is greater than {skeconomy.%player%.money.total}:
@@ -29,8 +29,8 @@ command /skMoneypay <integer> <player>:
 				add argument 1 to {skeconomy.%player%.player.payto}
 				remove argument 1 from {skeconomy.%player%.money.total}
 				add argument 1 to {skeconomy.%{skeconomy.%player%.player.payto}%.money.total}
-				send "You recieved %{skeconomy.%player%.money.paying}% from from %player%" to {%player%.money.payto}
-				message "You successfully paid %argument 1% %{skeconomy.money.name}% to %{skeconomy.%player%.player.payto}%"
+				send "You recieved <aqua>%{skeconomy.%player%.money.paying}% <white>from <aqua>%player%" to {%player%.money.payto}
+				message "You successfully paid <aqua>%argument 1% %{skeconomy.money.name}% <white>to <aqua>%{skeconomy.%player%.player.payto}%"
 		else:
 			message "<red>You don't have the required permission"
 
@@ -93,3 +93,23 @@ command /skMoneyothermsg <text>:
 
 		else:
 			message "<red>You don't have the required permission"
+
+command /skMoneyreq <integer> <player>:
+	description: Request some money from someone.
+	usage: /skMoneyreq <amount> <player>
+	permission: skeconomy.money.request
+	trigger:
+		player has permission "skeconomy.money.request":
+			message "Requesting <aqua>%argument 1% %{skeconomy.money.name}% <white>from <aqua>%player argument%"
+			set {skeconomy.%player%.req.to} to player argument
+			set {skeconomy.%player%.req.from} to player
+			set {skeconomy.%player%.req.tototal} to {skeconomy.%{skeconomy.%player%.req.to}%.money.total}
+			{skeconomy.%player%.req.tototal} is greater than integer argument:
+				send "<aqua>%{skeconomy.%player%.req.from}% <white>has requested <aqua>%argument 1% %{skeconomy.money.name}% <white>from you" to {skeconomy.%player%.req.to}
+				send "Type /skMoneypay <aqua>%argument 1% %{skeconomy.%player%.req.from}% <white>to send the money" to {skeconomy.%player%.req.to}
+			else:
+				message "%{skeconomy.%player%.req.to}% doesn't have that much money."
+				stop trigger
+		else:
+			message "<red>You don't have the required permission"
+			stop trigger

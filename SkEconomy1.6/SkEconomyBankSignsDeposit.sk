@@ -1,0 +1,117 @@
+
+#Bank sign 50
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "50":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 50:
+						message "You do not have that much money"
+					else:
+						remove 50 from {skeconomy.%player%.money.total}
+						add 50 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>50 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 100
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "100":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 100:
+						message "You do not have that much money"
+					else:
+						remove 100 from {skeconomy.%player%.money.total}
+						add 100 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>100 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 200
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "200":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 200:
+						message "You do not have that much money"
+					else:
+						remove 200 from {skeconomy.%player%.money.total}
+						add 200 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>200 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 250
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "250":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 250:
+						message "You do not have that much money"
+					else:
+						remove 250 from {skeconomy.%player%.money.total}
+						add 250 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>250 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 300
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "300":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 300:
+						message "You do not have that much money"
+					else:
+						remove 300 from {skeconomy.%player%.money.total}
+						add 300 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>300 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 350
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "350":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 350:
+						message "You do not have that much money"
+					else:
+						remove 350 from {skeconomy.%player%.money.total}
+						add 350 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>350 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 400
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "400":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 400:
+						message "You do not have that much money"
+					else:
+						remove 400 from {skeconomy.%player%.money.total}
+						add 400 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>400 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 450
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "450":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 450:
+						message "You do not have that much money"
+					else:
+						remove 450 from {skeconomy.%player%.money.total}
+						add 450 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>450 %{skeconomy.money.name}% <white>into your bank account"
+
+#Bank sign 500
+on rightclick on sign:
+	line 1 of the clicked block is "[MoneyBank]":
+		line 2 of the clicked block is "Deposit":
+			line 3 of the clicked block is "500":
+				player has permission "skeconomy.bank.deposit":
+					if {skeconomy.%player%.money.total} is smaller than 500:
+						message "You do not have that much money"
+					else:
+						remove 500 from {skeconomy.%player%.money.total}
+						add 500 to {skeconomy.%player%.bank.total}
+						message "You have deposited <aqua>500 %{skeconomy.money.name}% <white>into your bank account"

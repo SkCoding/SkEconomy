@@ -17,7 +17,7 @@ command /skBankdep <integer>:
 			else:
 				remove {skeconomy.%player%.bank.deposit} from {skeconomy.%player%.money.total}
 				set {skeconomy.%player%.bank.difference} to {skeconomy.%player%.bank.total} - {skeconomy.bank.max}
-				message "You have deposited %{skeconomy.%player%.bank.deposit}% %{skeconomy.money.name}%  into your bank account"	
+				message "You have deposited <aqua>%{skeconomy.%player%.bank.deposit}% %{skeconomy.money.name}%  <white>into your bank account"	
 				stop trigger
 
 command /skBankwit <integer>:
@@ -38,7 +38,6 @@ command /skBankwit <integer>:
 			else:
 				add {skeconomy.%player%.bank.withdraw} to {skeconomy.%player%.money.total}
 				message "You have withdrawn %{skeconomy.%player%.bank.withdraw}% %{skeconomy.money.name}% from your bank account"
-				message "You have %{skeconomy.%player%.bank.difference}% %{skeconomy.money.name}% worth of space left in your bank account"
 				stop trigger
 
 command /skBank:
@@ -48,7 +47,7 @@ command /skBank:
 		if {skeconomy.%player%.bank.total} is 0:
 			message "You don't have any money in your bank account"
 		else:
-			message "You have %{skeconomy.%player%.bank.total}% %{skeconomy.money.name}% in your bank account"
+			message "You have <aqua>%{skeconomy.%player%.bank.total}% %{skeconomy.money.name}% <white>in your bank account"
 
 command /skBankother <player>:
 	permission: skeconomy.bankother.show
@@ -74,29 +73,9 @@ command /skBankrem <integer> <player>:
 		player has permission "skeconomy.bank.remove":
 			set {skeconomy.%player%.bank.remove.from} to player argument
 			if {skeconomy.%{skeconomy.%player%.bank.remove.from}%.bank.total} is smaller than integer argument:
-				message "%{skeconomy.%player%.bank.remove.from}% does not have %integer argument% %{skeconomy.money.name}%  in their bank account"
+				message "<aqua>%{skeconomy.%player%.bank.remove.from}% <white>does not have <aqua>%integer argument% %{skeconomy.money.name}% <white>in their bank account"
 			else:
 				remove integer argument from {skeconomy.%{skeconomy.%player%.bank.remove.from}%.bank.total}
-				message "%integer argument% %{skeconomy.money.name}% have been removed from your bank account"
+				message "<aqua>%integer argument% %{skeconomy.money.name}% <white>has been removed from <aqua>%{skeconomy.%player%.bank.remove.from}%<white>'s bank account"
 		else:
 			message "You don't have the required permission"
-
-on rightclick on sign:
-	line 1 of the clicked block is "[MoneyBank]":
-		line 2 of the clicked block is "Deposit":
-			line 3 of the clicked block is "50":
-				player has permission "skeconomy.bank.deposit":
-					if {skeconomy.%player%.money.total} is smaller than 50:
-						message "You do not have that much money"
-					else:
-						remove 50 from {skeconomy.%player%.money.total}
-						add 50 to {skeconomy.%player%.bank.total}
-						message "You have deposited <aqua>50 <white>%{skeconomy.money.name}% into your bank account"
-			set {skeconomy.%player%.bank.deposit} to line 3 of the clicked block
-			player has permission "skeconomy.bank.deposit":
-				if {skeconomy.%player%.money.total} is smaller than {skeconomy.%player%.bank.deposit}:
-					message "You do not have that much money"
-				else:
-					remove {skeconomy.%player%.bank.deposit} from {skeconomy.%player%.money.total}
-					add {skeconomy.%player%.bank.deposit} to {skeconomy.%player%.bank.total}
-					message "You have deposited <aqua>%{skeconomy.%player%.bank.deposit}% <white>%{skeconomy.money.name}% into your bank account"

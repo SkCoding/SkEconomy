@@ -1,13 +1,9 @@
-SkEconomyGive
+eSkEconomyAdmin
 skGive <amount> [player]- Give money to yourself or another player. - skeconomy.admin.give 
 
 SkEconomyEarn
 skEarnset <block> <reward> - Set an EarnBlock and reward - skeconomy.earn.set
 skEarnnotify - Toggle EarnNotify on and off - skeconomy.earn.notify - earntoggle, skearntoggle
-skEarnwhat <block> - check reward the reward for an earnblock if there is one - earnwhat
-
-SkEconomyRequest
-skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request
 
 SkEconomyMoney
 skMoney - Show the players total money - skeconomy.money.show
@@ -16,16 +12,23 @@ skMoneyname <text> - Set the currency name - skeconomy.money.setname
 skMoneymsg <text> - set the /skMoney message - skeconomy.money.setmsg
 skMoneyother <player> - Check another player's total money - skeconomy.moneyother.show
 skMoneyothermsg <text> - Set the /skMoneyother <player> message - skeconomy.moneyother.setmsg
+skMoneyreq <amount> <player> - Request some money from someone - skeconomy.money.request
+
 
 Misc:
 skeconomy.moneyother.hidden - Hides player from /skMoneyother <player>
 
 SkEconomyBank
-sBankdep <amount> - Deposit money into your bank account - skeconomy.bank.deposit
-sBankwit <amount> - Withdraw money from your bank account - skeconomy.bank.withdraw
+skBankdep <amount> - Deposit money into your bank account - skeconoeemy.bank.deposit
+skBankwit <amount> - Withdraw money from your bank account - skeconomy.bank.withdraw
 skBank - Show your bank balance - skeconomy.bank.show
 skBankother <player> - Show the bank balance of another player - skeconomy.bankother.show
-skMoneybankrem <amount> <player> - Removes an amount of money from a player's bank balance
+skBankrem <amount> <player> - Removes an amount of money from a player's bank balance
 
 Misc:
 skeconomy,bankother.hidden - Hides the player from the command /skBankother <player>
+
+SkItemBank
+skItembankdep <material> - Deposit an item into your item bank. Enchanted items are not supported. - skeconomy.itembank.deposit
+skItembank - Show what is in your item bank. - skeconomy.itembank.show
+skItembankwit - Withdraw the item stored in your Item Bank. - skeconomy.itembank.withdraw

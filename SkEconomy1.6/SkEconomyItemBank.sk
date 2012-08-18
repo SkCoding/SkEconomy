@@ -35,7 +35,7 @@ command /skItembank:
 			stop trigger
 
 command /skItembankwit:
-	permission: skeconomy.itembanl.withdraw
+	permission: skeconomy.itembank.withdraw
 	description: Withdraw the item stored in your Item Bank.
 	trigger:
 		player has permission "skeconomy.itembank.withdraw":
@@ -51,7 +51,3 @@ command /skItembankwit:
 					message "You withdrew a/an %{skeconomy.%player%.itembank.deposit}% from your Item Bank"
 		else:
 			message "You don't have the required permission"
-
-command /setbankempty:
-	trigger:
-		set {skeconomy.%player%.itembank.ifstored} to false

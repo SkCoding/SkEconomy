@@ -1,22 +1,11 @@
 command /skEarnset <material> <integer>:
-	permission: skeconomy.admin.earn.set
+	permission: skeconomy.earn.set
 	description: Set a block to earn money from by mining.
 	usage: /skEarnset <block> <reward>
 	trigger:
 		set {skeconomy.earn.block.%id of argument 1%} to material argument
 		set {skeconomy.earn.reward.%id of argument 1%} to integer argument
 		message "Mining <aqua>%{skeconomy.earn.block.%id of argument 1%}% <white>will now give you <aqua>%{skeconomy.earn.reward.%id of argument 1%}% <aqua>%{skeconomy.money.name}%"
-
-command /skEarnwhat <material>:
-	permission: skeconomy.earn.what
-	description: See  what reward is for a block
-	usage: /skEarnwhat <block>
-	aliases: earnwhat
-	trigger:
-		if {skeconomy.earn.block.%id of block%} is set:
-			message "<aqua>%{skeconomy.earn.block.%id of block%}% <white>gives <aqua>%{skeconomy.earn.reward.%id of argument 1%}% %{skeconomy.money.name}%"
-			stop
-		message " %argument% does not give a reward."
 
 command /skEarnnotify:
 	permission: skeconomy.earn.notify
