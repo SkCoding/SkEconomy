@@ -1,0 +1,10 @@
+command /skGive <integer> <player = %player%>:
+	description: Give money to yourself or another player.
+	usage: /skGive <amount> [player]
+	aliases: give, moneygive
+	permission: skeconomy.admin.give
+	trigger:
+		add argument 1 to {skeconomy.%argument 2%.money.total}
+		if argument 2 is not %player%:
+			send "You were given %argument 1% %{skeconomy.money.name}% from %player%" to argument 2
+		message "You gave %argument 1% %{skeconomy.money.name}% to %argument 2%"
