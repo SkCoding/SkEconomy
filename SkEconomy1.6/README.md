@@ -25,15 +25,15 @@ Issue Tracker & Suggestions
 -------------
 
 Please submit bug reports and feature requests for SkEconomy here:
-https://github.com/SkCoding/SkEconomyDev/issues
+https://github.com/SkCoding/SkEconomy/issues
 
 
 Contributing
 ------------
 
 We happily accept contributions. The best way to do this is to fork
-WorldEdit on GitHub, add your changes, and then submit a pull request. We'll
-look at it, make comments, and merge it into WorldEdit if everything
+SkEconomy on GitHub, add your changes, and then submit a pull request. We'll
+look at it, make comments, and merge it into SkEconomy if everything
 works out.
 
 Your submissions have to be licensed under the GNU General Public License v3.
