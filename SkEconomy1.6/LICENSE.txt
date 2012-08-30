@@ -1,4 +1,4 @@
-SKEconomy License
+SKCoding License
 -----------------
 
                    GNU LESSER GENERAL PUBLIC LICENSE
